@@ -1,4 +1,4 @@
-CREATE TABLE #SalesOrders
+﻿CREATE TABLE #SalesOrders
 (
  SalesOrderID INT,
  OrderDate DATE,
@@ -61,5 +61,23 @@ FROM #SalesOrders
 WHERE DATEPART(quarter,OrderDate) = 4
 
 
+
+--Your code below this line:
+
+--내 답 
+UPDATE #SalesOrders
+SET
+	OrderSubcategory = CONCAT(Ordercategory, ' - ', OrderAmtBucket)
+
+SELECT OrderSubCategory From #SalesOrders
+		
+-- 모범 답 
+UPDATE #SalesOrders
+SET OrderSubcategory = OrderCategory + ' - ' + OrderAmtBucket
+
+SELECT * FROM #SalesOrders
+
 DROP TABLE #SalesOrders
 
+
+-- 내 답과의 차이: concat을 쓸 경우 null-안전이기때문에 null 값 있더라도 무시하고 문자열 연결 정상적으로 됨, 모범 답은 MS Server 식이며, null 포함시 결과도 NULL임 
