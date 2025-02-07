@@ -1,3 +1,4 @@
+-- 
 --Update NULL fields in Calendar table
 
 UPDATE AdventureWorks2019.dbo.Calendar
